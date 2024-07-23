@@ -1,0 +1,38 @@
+Domínio/Problema
+
+Considerando nosso conhecimento no domínio bancário, iremos abstrair uma solução Oirnetada a Objetos em Java, para isso vamos interpretar:
+
+"Um banco oferece aos seus clientes dois tipos de contas (correnta e poupança), as quais possuem as funcionalidades de depósito, saque e transferência (entre contas da própria instituição)."
+
+Requisitos:
+
+Noções Básicas de Java OO
+Noções Básicas de Git/GitHub
+
+Tudo que fazemos por interface, podemos fazer sem, interface geralmente deixa mais elegante
+Inteface - Vai obrigar todo mundo que extender ela, a implementar o que ela tem | Uma classe abstrata com todos os métodos abstratos|
+O que é uma classe abstrata? - Tem como caracterísitca, solicitar alguma implementação que ela sozinha não consegue resolver 
+
+Constante dentro de java: É uma classe que é static pois é uma informação que tenha relação com a classe ContaCorrente e não com sua instância;
+
+Pilares da orientação a objetos;
+
+Abstração:                   || Transformar a ideia trazendo para algo que faça sentido computacionalmente 
+ - Habilidade de se concentrar nos aspectos essenciais de um domínio, ignorando caracterísitcas menos importantes ou acidentais.
+ 
+ Entidade: Classe que representa algo importante do nosso sistema
+ 
+Encapsulamento:
+ - Esconder a implementação dos objetos, criando assim interfaces de uso mais concisas e fáceis de usar/entender. O encapsulamento favorece principalmente dois aspectos de um sistema: a manutenção e a evolução.
+ 
+Herança:
+  - Permite que você defina uma classe filha que  reutiliza, estende ou modifica o comportamento de uma classe pai. A classe cujos membros são herdados é chamada de classe base. A classe que herda os membros da classe base é chamada de classe derivada. | DRY - Do not repeat yourself
+  
+Polimorfismo:
+ - Capacidade de um objeto ser poder ser referenciado de várias formas, ou seja, é capacidade de tratar objetos criados a partir das classes específicas como objetos de uma classe genérica. || CUIDADO, polimorfismo não quer dizewr que o objeto fica se transformando, muito pelo contrário, um objeto nasce de um tipo e morre daquele tipo, o que pode mudar é a maneira como nos referimos a ele.
+ 
+ DESAFIO:
+ 
+ Evoluir o projeto:
+ - Estender o domínio, com novas classes atributos ou métodos;
+ - Incluir Lombok ao projeto para reduzir a verbosidade (Pra quem gosta)
