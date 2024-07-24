@@ -36,3 +36,18 @@ Polimorfismo:
  Evoluir o projeto:
  - Estender o domínio, com novas classes atributos ou métodos;
  - Incluir Lombok ao projeto para reduzir a verbosidade (Pra quem gosta)
+ 
+ 
+Apache Mave:
+ - Gerenciar build e dependências de um projeto (since 2004);
+	Tem diversas ferramentas para executar testes de forma automática e compilar todas as clases java que exitem em nossa API;
+ - O que resolve? => 
+ - Como a aplicação é empacotada?
+ - Endereça como o código foi construido através do POM(Project Object Model);
+ - controller/service/repository -> jar | other-package/component/configuration -> jar;
+ - Fornecer informações de qualidade;
+ - Facilita a compreensão do desenvolvedor;
+
+ - Configurando
+ 
+ Criando projeto com Maven e comandos do dia a dia 
