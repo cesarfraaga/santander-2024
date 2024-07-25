@@ -1,4 +1,4 @@
-Domínio/Problema
+============= Domínio/Problema
 
 Considerando nosso conhecimento no domínio bancário, iremos abstrair uma solução Oirnetada a Objetos em Java, para isso vamos interpretar:
 
@@ -9,13 +9,13 @@ Requisitos:
 Noções Básicas de Java OO
 Noções Básicas de Git/GitHub
 
-Tudo que fazemos por interface, podemos fazer sem, interface geralmente deixa mais elegante
+============= Tudo que fazemos por interface, podemos fazer sem, interface geralmente deixa mais elegante
 Inteface - Vai obrigar todo mundo que extender ela, a implementar o que ela tem | Uma classe abstrata com todos os métodos abstratos|
 O que é uma classe abstrata? - Tem como caracterísitca, solicitar alguma implementação que ela sozinha não consegue resolver 
 
 Constante dentro de java: É uma classe que é static pois é uma informação que tenha relação com a classe ContaCorrente e não com sua instância;
 
-Pilares da orientação a objetos;
+============= Pilares da orientação a objetos;
 
 Abstração:                   || Transformar a ideia trazendo para algo que faça sentido computacionalmente 
  - Habilidade de se concentrar nos aspectos essenciais de um domínio, ignorando caracterísitcas menos importantes ou acidentais.
@@ -38,7 +38,7 @@ Polimorfismo:
  - Incluir Lombok ao projeto para reduzir a verbosidade (Pra quem gosta)
  
  
-Apache Mave:
+============= Apache Maven:
  - Gerenciar build e dependências de um projeto (since 2004);
 	Tem diversas ferramentas para executar testes de forma automática e compilar todas as clases java que exitem em nossa API;
  - O que resolve? => 
@@ -51,3 +51,162 @@ Apache Mave:
  - Configurando
  
  Criando projeto com Maven e comandos do dia a dia 
+ mvn archetype:generate -DgroupId=testemaven -DartifactId=quick-start-maven -Darchetype=maven-archetype-quickstart -DinteractiveMode=false
+
+cmds: compile; test; package; clean
+
+Maven archetype > template de como um projeto será construído | versao de components, organização de pacotes e organização de arquivos
+
+============= POM:                                                     pom.xml extends superpom 
+ - Nome do projeto;
+ - Dependências; <dependecies><dependency><goupId>org.hibernate<groupId><artifactId>hibernate-search-orm(nome)</artifactId><version>5.11.9.Final</version></dependency>
+ - Estrutura XML;
+ - Repositório: Local utilizado pelo maven para buscar os artefatos, plugins || Remoto e local
+
+
+============= INTRODUÇÃO A TESTES DE SOFTWARE
+
+Testes:
+ Como testar?
+Ex: Valor > Sistema de saque > Resultado 
+
+* Testar o código para encontrar bugs e afins
+ 
+ Modelo cascata = Especificação -> Projeto de Software -> Implementação -> Testes -> Implantação (Uma fase não conseguia voltar a outra)
+ 
+ Agile       Analisa - projeta - desenvolve - testa                        QA - Tester 
+ software
+ development
+ 
+ Conceitos básicos:
+Defeito: Causa raiz; Instrução de código programada errada;
+Erro: Cenário que talvez o desenvolvedor não se atentou e esqueceu de testar; Evidencia um defeito
+Falha: Cenário inesperado no qual o usuário tem contato; Evidencia um Erro
+
+Verificação: Estamos construindo o sistema certo?
+Validação: Estamos construindo o software certo?
+
+ Níveis de teste:
+ 
+Unidade > Integração > Sistema > Regressão > Aceitação
+Unidade/Unitário > unittest - Unit testing framework; 
+Integração > Integration tests, pode fazer conectando a banco de dados, simulando apis, tentenado entender a entrada e a saída; 
+Sistema > Disponibiliza para algumas pessoas apenas para fazer as validações do sistema;
+Regressão > Reavaliar o que está sendo desenvolvido, entender se as novas features não estão quebrando as partes anteriormente testadas;
+   testes Alpha -> Primeira "cara" do software mas dando a opção de validação;
+		  Beta -> Já para uma gama maior de usuários; 
+		  Cannary -> Estratégia de Deploy (implantar em produção) Deploy Cannary, segmentar para que um público específico enxergue apenas uma versão específica;
+Aceitação > Já foi pra produção, usuário entende e de fato aceita;
+* BDD - Escrever um teste com especificações
+ 
+ Técnicas de teste:
+ 
+Caixa branca (Teste estrutural): 
+Validar dados, controles, fluxos, chamadas; Garantir a qualidade da implementação;  
+
+Caixa preta (Teste funcional):
+Verificar saídas usando vários tipos de entrada; Teste sem conhecer a estrutura interna do software;
+
+Caixa cinza (estrutural/funcional)
+Parte lógica e funcionalidade; Ter acessoa a documentação do funcionamento do código;
+
+ Testes não funcionais;
+
+Requisitos não funcionais: (termo da engenharia de software)
+
+Comportamento do sistema
+Performance
+Escalabilidade
+Segurança
+Infraestrutura
+
+Ex: Qual plataforma o sistema irá rodar? 
+
+Teste de carga | é realizado para verificar qual o volume de transações, acessos simultâneos ou usários que um servidor/software/sistema suporta":
+ Objetivos para clareza de resultados; Ambiente; Cenários; Execução de testes; Analise de resultado;
+ 
+ 
+Teste de estresse : é realizado para submeter o software a situações extremas. Basicamente, o teste de stress baseia-se em testar os limites do softtware e avaliar o comportamento.
+
+Teste de segurança : Detectar vulnerabilidade em sistema, software, redes e app. || ZAP 
+
+ Pirâmidade de Testes:
+ 
+UNIT TESTS -> SERVICE TESTS -> UI TESTS
+
+ TESTES UNITÁRIOS COM JUnit:
+Unidade/Unitário > unittest - Unit testing framework; - testa a menor unidade possível, função, método, classes;
+		Geralmente escrito em tempo de desenvolvimento;
+		
+			Exemplo simples:
+				
+				class Pessoa {
+					
+					public boolean MaiorDeIdade() {
+						return idade >= 18;
+					}
+				}
+				
+				class PessoaTeste {
+				
+					@Test
+					void validaVerificacaoDeMaioridade() {
+						Pessoa joaozinho = new Pessoa ("João", LocalDate.of(2004, 1, 1));
+						Assertions.assertTrue(joaozinho.MaiorDeIdade());
+					}
+				}
+Why? Compreender o código fonte; Corrigir bugs com segurança; Refatorar código sem introduzir bugs; Entregar uma nova feature com segurança;
+Cobertura de testes; Automação na execução de testes; Cultura de agilidade
+
+JUnit: 
+ Framework open source para criação de testes unitários; 
+	JUnit 5
+		JUnit Platform -> Componente que executa os testes;
+		JUnit Jupiter -> Tudo que usamos, Implementações, Anotações;
+		JUnit Vintage -> Fazer integração com versçoes mais antigas;
+		
+Configurando JUnit nos projetos: 
+(Consultar no MVN Repository e adicionar no código)
+
+Maven:
+
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.11.0-M2</version>
+    <scope>test</scope>
+</dependency>
+
+Exemplo de uma validação de cálculo de idade:
+
+public class PessoaTest {
+	
+	@Test
+	void validarCalculoIdade() {
+		Pessoa pessoa = new Pessoa("Kaleb", localDate.of(2019, 7, 23));
+		Assertions.assertEquals(2, pessoa.getIdade());
+	}
+}
+
+O básico para testar:
+
+    @Test
+    public void deveCalcularIdadeCorretamente() {
+
+        Pessoa pessoa = new Pessoa("Jennifer", LocalDateTime.of(1995, 2, 24, 15, 0, 0));
+        Assertions.assertEquals(29, pessoa.getIdade());
+    }
+
+    @Test
+    public void deveRetornarSeForMaiorDeIdade() {
+        Pessoa pessoa = new Pessoa("Jennifer", LocalDateTime.of(1995, 2, 24, 15, 0, 0));
+        Assertions.assertTrue(pessoa.MaiorDeIdade());
+
+        Pessoa pessoa2 = new Pessoa("Francisco César", LocalDateTime.now());
+        Assertions.assertFalse(pessoa2.MaiorDeIdade());
+    }
+}
+
+Mais algumas asserções:
+
