@@ -210,3 +210,46 @@ O básico para testar:
 
 Mais algumas asserções:
 
+After & Before:
+	@BeforeAll
+    public static void configurarConexao() {
+        BancoDeDados.iniciarConexao();
+    }
+
+    @BeforeEach
+    void insereDadosParaTeste() {
+        BancoDeDados.inserirDados(new Pessoa("João", LocalDateTime.of(2000, 1, 1, 13, 0, 0)));
+    }
+
+    @AfterEach
+    void removeDadosDoTeste() {
+        BancoDeDados.removerDados(new Pessoa("João", LocalDateTime.of(2000, 1, 1, 13, 0, 0)));
+    }
+	    @Test
+    public void validarDadosDeRetorno() {
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    public void validarDadosDeRetorno2() {
+        Assertions.assertNull(null);
+    }
+
+    @AfterAll
+    public static void finalizarConexao() {
+        BancoDeDados.finalizarConexao();
+    }
+	
+	
+Assumptions e Testes condicionais:
+
+public class CondicionaisTeste {
+
+    @Test
+    //@EnabledIfEnvironmentVariable(named = "USER", matches = "cesar")
+    @EnabledOnJre(JAVA_22)
+    public void validarAlgoSomenteNoUsuarioCesar() {
+        Assumptions.assumeFalse("cesar".equals(System.getenv("USER")));
+        Assertions.assertEquals(10, 5 + 5);
+    }
+}
